@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+{% import "nav.html" as nav with context %}
+{% import "name.html" as name with context %}
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Support | Bitdaily</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Contact Support" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="static/images/favicon.ico">
+
+        <!-- Bootstrap Css -->
+        <link href="static/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="static/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="static/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body data-sidebar="dark" data-new-gr-c-s-check-loaded="14.1022.0" data-gr-ext-installed=""  class="" style="" id="body" onLoad="returndate();">
+
+
+    {{ nav|safe }}
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                </div>
+                <!-- End Page-content -->
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+                        <!-- start page title -->
+
+                        <!-- end page title -->
+                                                                                                                {% with messages = get_flashed_messages() %}
+                                          {% if messages %}
+                                            {% for message in messages %}
+                                              <div class="alert alert-primary" role="alert">
+                                                {{message}}
+                                              </div>
+                                            {% endfor %}
+                                          {% endif %}
+                                    {% endwith %}
+                        <div class="col-xl">
+<h4 class="card-title mb-4">Support</h4>
+                <form method="post">
+                  <div class="row mb-4">
+                    <label class="col-sm-3 col-form-label"
+                      >Subject</label
+                    >
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        class="form-control"
+                        style="width: 600px"
+                      />
+                    </div>
+                    <br /><br /><br /><br />
+                    <label class="col-sm-3 col-form-label">Your Message: (max 500 characters)</label>
+                    <div class="col-sm-9">
+                        <textarea
+                                name="message1"
+                            class="form-control"
+                            rows="4" id="message1"
+                                minlength="10"
+                            maxlength="500">
+                    </textarea>
+                    </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary w-md" value="Submit">
+                  </div>
+                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © bitdaily.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by BitDaily
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center px-3 py-4">
+
+                    <h5 class="m-0 me-2">Settings</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+            </div> <!-- end slimscroll-menu-->
+        </div>
+
+        <!-- JAVASCRIPT -->
+        <script src="static/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="static/libs/metismenu/metisMenu.min.js"></script>
+        <script src="static/libs/simplebar/simplebar.min.js"></script>
+        <script src="static/libs/node-waves/waves.min.js"></script>
+        <script src="static/libs/apexcharts/apexcharts.min.js"></script>
+        <script src="static/js/pages/crypto-dashboard.init.js"></script>
+        <script src="static/js/app.js"></script>
+
+    </body>
+</html>

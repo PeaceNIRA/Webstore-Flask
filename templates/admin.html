@@ -1,0 +1,205 @@
+<!doctype html>
+{% import "nav.html" as nav %}
+{% import "name.html" as name %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Dashboard | {{ name|safe }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="User dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <link rel="shortcut icon" href="static/images/favicon.ico">
+        <link href="static/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="static/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="static/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    </head>
+    <body data-sidebar="dark">
+        <div id="layout-wrapper">
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <div class="navbar-brand-box">
+                            <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                            <img src="static/images/logo.svg" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                            <img src="static/images/logo-dark.png" alt="" height="17">
+                            </span>
+                            </a>
+                            <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                            <img src="static/images/logo-light.svg" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                            <img src="static/images/logo-light.png" alt="" height="19">
+                            </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img id="header-lang-img" src="static/images/flags/us.jpg" alt="Header Language" height="16">
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
+                                <img src="static/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="static/images/users/avatar-1.jpg"
+                                alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1">{{ username }}</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item text-danger" href="/logout"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            {{ nav|safe }}
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">Crypto</h4>
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Admin Panel</a></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-xl">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-3">Wallet Balance</h4>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="mt-4">
+                                                    <br>
+                                                    <p>Total Balance</p>
+                                                    <h1>$ {{ tol }}</h1>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <br>
+                                                            </div>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <a href="/deposit" class="btn btn-primary btn-sm">See transactions<i class="mdi mdi-arrow-right ms-1"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-3">Total rigs</h4>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="mt-4">
+                                                    <p>Number of rigs</p>
+                                                    <h4>{{servercount}}</h4>
+                                                    <div class="row">
+                                                    <div class="mt-4">
+                                                        <a href="/shop" class="btn btn-primary btn-sm">Manage <i class="mdi mdi-arrow-right ms-1"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <br><br><br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Manage users</h4>
+                                {% for user in users %}
+                                    <div class="card border-danger bg-light">
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                                      <li class="list-group-item list-group-item-primary">username: {{user.username}}</li>
+                                                      <li class="list-group-item list-group-item-secondary">balance: ${{user.bal}}</li>
+                                                      <li class="list-group-item list-group-item-danger"><a href="/support" class="btn btn-danger btn-sm">Ban<i class="mdi mdi-arrow-right ms-1"></i></a></li>
+                                                    </ul>
+                                </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © {{ name|safe }}.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Design & Develop by {{ name|safe }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        </div>
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center px-3 py-4">
+                    <h5 class="m-0 me-2">Settings</h5>
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                    <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+                <hr class="mt-0" />
+                <h6 class="text-center mb-0">Choose Layouts</h6>
+                <div class="p-4">
+                    <div class="mb-2">
+                        <img src="static/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
+                        <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                    </div>
+                    <div class="mb-2">
+                        <img src="static/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="static/css/bootstrap-dark.min.css" data-appStyle="static/css/app-dark.min.css">
+                        <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                    </div>
+                    <div class="mb-2">
+                        <img src="static/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
+                    </div>
+                    <div class="form-check form-switch mb-5">
+                        <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch" data-appStyle="static/css/app-rtl.min.css">
+                        <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightbar-overlay"></div>
+        <script src="static/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="static/libs/metismenu/metisMenu.min.js"></script>
+        <script src="static/libs/simplebar/simplebar.min.js"></script>
+        <script src="static/libs/node-waves/waves.min.js"></script>
+        <script src="static/libs/apexcharts/apexcharts.min.js"></script>
+        <script src="static/js/pages/crypto-dashboard.init.js"></script>
+        <script src="static/js/app.js"></script>
+    </body>
+</html>

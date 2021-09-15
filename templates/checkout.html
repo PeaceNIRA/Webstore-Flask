@@ -1,0 +1,131 @@
+<!doctype html>
+{% import "nav.html" as nav with context %}
+{% import "name.html" as name with context %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <title>Dashboard | {{ name|safe }}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta content="User dashboard" name="description" />
+      <meta content="Themesbrand" name="author" />
+      <link rel="shortcut icon" href="static/images/favicon.ico">
+      <link href="static/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+      <link href="static/css/icons.min.css" rel="stylesheet" type="text/css" />
+      <link href="static/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+   </head>
+   <body data-sidebar="dark" data-new-gr-c-s-check-loaded="14.1022.0" data-gr-ext-installed=""  class="" style="" id="body"
+      {{ nav|safe }}
+      <div class="main-content">
+      <div class="page-content">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-12">
+                  <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                     <h4 class="mb-sm-0 font-size-18">Available Rigs</h4>
+                     <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                           <li class="breadcrumb-item"><a href="javascript: void(0);">Store</a></li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+            </div>
+             <br><br>
+                                                {% with messages = get_flashed_messages() %}
+                                          {% if messages %}
+                                            {% for message in messages %}
+                                              <div class="alert alert-primary" role="alert">
+                                                {{message}}
+                                              </div>
+                                            {% endfor %}
+                                          {% endif %}
+                                    {% endwith %}
+            <div class="container">
+                {% for server in servertype %}
+                  <input type="hidden" id="daily" name="daily" value="{{server.price}}">
+               <div class="card bg-light">
+                  <div class="row no-gutters">
+                     <div class="col-md-4">
+                        <img src="{{server.picture}}" class="card-img">
+                     </div>
+                     <div class="col-md-8">
+                        <div class="card-body p-5">
+                           <h5 class="card-title text-white">{{server.server}}</h5>
+                           <ul class="list-group">
+                              <li class="list-group-item list-group-item-primary">Rig Name: {{server.server}}</li>
+                              <li class="list-group-item list-group-item-secondary">daily price: ${{server.price}}</li>
+                              <li class="list-group-item list-group-item-secondary">hash rate GH/s: {{server.hash}}</li>
+                              <li class="list-group-item list-group-item-secondary">estimated daily profit: {{server.dprofit}}</li>
+                              <li class="list-group-item list-group-item-secondary"><div class="slidecontainer">
+                                   <input type="range" min="7" max="90" value="7" class="slider" id="myRange" onclick="multiply()">
+                                 <p>Days: <span id="demo"></span>
+                                 </p>price: $<span id="demo2"></span><br>
+                                          <label class="col-sm-3 col-form-label">Discount Code</label>
+                                                <div class="col-sm-9">
+                                                  <input type="text" class="form-control" id="coupon">
+                                                </div>
+                              </p>
+                                 </div></li>
+                              <li disabled class="list-group-item list-group-item-danger"><a id="button1" href="/checkout?server={{server.server}}&type=PURCHASE" onclick="location.href=this.href+day();return false;" class="btn disabled btn-danger btn-sm">Purchase<i class="mdi mdi-arrow-right ms-1"></i></a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+                <br><br>
+               {% endfor %}
+            </div>
+            <footer class="footer">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © {{ name|safe }}.
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                           Design & Develop by {{ name|safe }}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <div class="right-bar">
+         <div data-simplebar class="h-100">
+            <div class="rightbar-title d-flex align-items-center px-3 py-4">
+               <h5 class="m-0 me-2">Settings</h5>
+               <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+               <i class="mdi mdi-close noti-icon"></i>
+               </a>
+            </div>
+      </div>
+      </div></div>
+      <div class="rightbar-overlay"></div>
+      <script src="static/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="static/libs/metismenu/metisMenu.min.js"></script>
+      <script src="static/libs/simplebar/simplebar.min.js"></script>
+      <script src="static/libs/node-waves/waves.min.js"></script>
+      <script src="static/libs/apexcharts/apexcharts.min.js"></script>
+      <script src="static/js/pages/crypto-dashboard.init.js"></script>
+      <script src="static/js/app.js"></script>
+      <script src="static/js/slider.js"></script>
+      <script src="static/js/toggle.js"></script>
+         <script src="static/js/multi.js"></script>
+                     <script>
+               function multiply(){
+                   var num1 = document.getElementById("demo").innerText;
+                   num2 = document.getElementById("daily").value;
+                   result = num1 * num2;
+                   document.getElementById("button1").classList.remove('disabled');
+                   document.getElementById("demo2").innerHTML = result;
+               }
+               function day(){
+               var val1 = document.getElementById("coupon").value;
+               var val2 = document.getElementById("demo").innerText;
+               var val3 = `&days=${val2}&code=${val1}`;
+               return val3
+               }
+            </script>
+   </body>
+</html>

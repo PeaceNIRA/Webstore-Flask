@@ -1,0 +1,106 @@
+<!doctype html>
+{% import "bootstrap/wtf.html" as wtf %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Register | Exchange</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <link rel="shortcut icon" href="static/images/favicon.ico">
+        <link href="static/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="static/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="static/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        
+        <div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card overflow-hidden">
+                            <div class="bg-primary bg-soft">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <div class="text-primary p-4">
+                                            <h5 class="text-primary">Free Register</h5>
+                                            <p>Get your free account now.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 align-self-end">
+                                        <img src="static/images/profile-img.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0"> 
+                                <div>
+                                    <a href="/">
+                                        <br>
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                            <span class="avatar-title rounded-circle bg-light">
+                                                <img src="static/images/logo.svg" alt="" class="rounded-circle" height="34">
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="p-2">
+                                    {% with messages = get_flashed_messages() %}
+                                          {% if messages %}
+                                            {% for message in messages %}
+                                              <div class="alert alert-primary" role="alert">
+                                                {{message}}
+                                              </div>
+                                            {% endfor %}
+                                          {% endif %}
+                                    {% endwith %}
+                                        {% block content %}
+                                    <form class="form-signin" method="POST" action="/signup">
+                                            <h2 class="form-signin-heading">Sign Up</h2>
+                                            {{ form.csrf_token }}
+                                        <div class="mb-3">
+                                            {{ wtf.form_field(form.username) }}
+                                        </div>
+                                         <div class="mb-3">
+                                            {{ wtf.form_field(form.email) }}
+                                         </div>
+                                            <div class="mb-3">
+                                            {{ wtf.form_field(form.password) }}
+                                            </div>
+                                         <div class="mb-3">
+                                            {{ wtf.form_field(form.Confirm_password) }}
+                                             </div>
+                                                                                 <div class="mb-3">
+                                            {{ wtf.form_field(form.referall) }}
+                                             </div>
+                                        <div class="mb-3">
+                                            {{ wtf.form_field(form.terms) }}
+                                                                                    <a href="/TOS">
+                                            Terms And conditions
+                                            </a>
+                                            </div>
+                                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+                                    </form>
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <div>
+                                <p>Already have an account ? <a href="/login" class="fw-medium text-primary"> Login</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="static/libs/jquery/jquery.min.js"></script>
+        <script src="static/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="static/libs/metismenu/metisMenu.min.js"></script>
+        <script src="static/libs/simplebar/simplebar.min.js"></script>
+        <script src="static/libs/node-waves/waves.min.js"></script>
+        <script src="static/js/pages/validation.init.js"></script>
+        <script src="static/js/app.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,113 @@
+
+        <div id="layout-wrapper">
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <div class="navbar-brand-box">
+                            <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                            <img src="static/images/logo.svg" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                            <img src="static/images/logo-dark.png" alt="" height="17">
+                            </span>
+                            </a>
+                            <a  class="logo logo-light" onclick="togglebody()">
+                            <span class="logo-sm">
+                            <img src="static/images/logo-light.svg" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                            <img src="static/images/logo-light.png" alt="" height="19">
+                            </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img id="header-lang-img" src="static/images/flags/us.jpg" alt="Header Language" height="16">
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
+                                <img src="static/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dropdown d-inline-block">
+                            <a class="d-none d-xl-inline-block ms-1" href="/deposit" style="color: black">${{bal}}</a>
+                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="static/images/users/avatar-1.jpg"
+                                alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1">{{ username }}</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item text-danger" href="/logout"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+                                </div>
+         <div class="vertical-menu">
+                <div data-simplebar class="h-10">
+                    <div id="sidebar-menu">
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title" key="t-menu">Menu</li>
+                            <li>
+                                <a href="/dashboard" class="waves-effect">
+                                <i class="bx bx-home-circle"></i>
+                                <span>Control Panel</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/shop">
+                                <i class="bx bx-bitcoin"></i>
+                                <span>shop</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/deposit">
+                                <i class="bx bx-money"></i>
+                                <span>Add Balance</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Withdraw">
+                                <i class="bx bxs-dollar-circle"></i>
+                                <span>Withdraw</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/support">
+                                <i class="bx bx-chat"></i>
+                                <span>Support</span>
+                                </a>
+                            </li>
+                            </ul>
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <ul class="metismenu list-unstyled">
+                                                        <li>
+                                <a href="/info">
+                                <i class="bx bx-help-circle"></i>
+                                <span>How it Works</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="/FAQ">
+                                <i class="bx bx-help-circle"></i>
+                                <span>FAQ</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="/TOS">
+                                <i class="bx bx-help-circle"></i>
+                                <span>Terms and Conditions</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>

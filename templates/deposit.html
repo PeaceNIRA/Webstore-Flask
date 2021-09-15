@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% import "nav.html" as nav with context %} {% import "name.html" as name with context %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dashboard | {{ name|safe }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="User dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="shortcut icon" href="static/images/favicon.ico" />
+    <link
+      href="static/css/bootstrap.min.css"
+      id="bootstrap-style"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="static/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="static/css/app.min.css"
+      id="app-style"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body data-sidebar="dark" data-new-gr-c-s-check-loaded="14.1022.0" data-gr-ext-installed=""  class="" style="" id="body">
+      {{ nav|safe }}
+      <div class="main-content">
+        <div class="page-content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div
+                  class="
+                    page-title-box
+                    d-sm-flex
+                    align-items-center
+                    justify-content-between
+                  "
+                >
+                  <h4 class="mb-sm-0 font-size-18">Crypto</h4>
+                  <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                      <li class="breadcrumb-item">
+                        <a href="javascript: void(0);">Store</a>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title mb-3">Wallet Balance</h4>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="mt-4">
+                        <br />
+                        <p>Available Balance</p>
+                        <h1>$ {{ bal }}</h1>
+                        <div class="row">
+                          <div class="col-6">
+                            <br />
+                          </div>
+                        </div>
+                        <div class="mt-4">
+                          <a href="/deposit" class="btn btn-primary btn-sm"
+                            >Deposit<i class="mdi mdi-arrow-right ms-1"></i
+                          ></a>
+                          <a href="/withdraw" class="btn btn-primary btn-sm"
+                            >Withdraw<i class="mdi mdi-arrow-right ms-1"></i
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% with messages = get_flashed_messages() %} {% if messages %} {%
+            for message in messages %}
+            <div class="alert alert-primary" role="alert">{{message}}</div>
+            {% endfor %} {% endif %} {% endwith %}
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title mb-4">Withdraw</h4>
+
+                <form method="post">
+                  <div class="row mb-4">
+                    <label class="col-sm-3 col-form-label"
+                      >Amount In USD</label
+                    >
+                    <div class="col-sm-9">
+                      <input
+                        type="number"
+                        id="deposit"
+                        name="deposit"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="currency" class="form-label">Currency</label>
+                    <select id="currency" name="currency" class="form-select">
+                      <option selected="" value="btc">BTC</option>
+                      <option value="LTC">LTC</option>
+                    </select>
+                  </div>
+
+                  <div class="row justify-content-end">
+                    <div class="col-sm-12">
+                      <div>
+                        <button type="submit" class="btn btn-primary w-md">
+                          Withdraw
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title mb-3">Current Withdraw Requests</h4>
+                  {% for deposit in deposits %}
+                  <div class="card border-danger bg-light">
+                    <div class="card-body">
+                      <ul class="list-group">
+                        <li class="list-group-item list-group-item-success">Payment ID: {{deposit.payment_id}}</li>
+                        <li class="list-group-item list-group-item-success">Payment Address:<br><b>{{deposit.pay_address}}</b></li>
+                        <li class="list-group-item list-group-item-success">Amount: ${{deposit.price_amount}}</li>
+                        <li class="list-group-item list-group-item-success capitalize">Crypto: {{deposit.crypto}}</li>
+                        <li class="list-group-item list-group-item-success">Crypto Amount: {{deposit.crypto_amount}}</li>
+                        <li class="list-group-item list-group-item-success">Status: {{deposit.status}}</li>
+                      </ul>
+                      <br>
+                      <form method="get">
+                        <input type="hidden" id="payment" name="payment" value="{{deposit.payment_id}}">
+                                                <button type="submit" class="btn btn-primary w-md">
+                          Update Status
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>
+                © {{ name|safe }}.
+              </div>
+              <div class="col-sm-6">
+                <div class="text-sm-end d-none d-sm-block">
+                  Design & Develop by {{ name|safe }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="right-bar">
+      <div data-simplebar class="h-100">
+        <div class="rightbar-title d-flex align-items-center px-3 py-4">
+          <h5 class="m-0 me-2">Settings</h5>
+          <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+            <i class="mdi mdi-close noti-icon"></i>
+          </a>
+        </div>
+    </div>
+    <div class="rightbar-overlay"></div>
+    <script src="static/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/libs/metismenu/metisMenu.min.js"></script>
+    <script src="static/libs/simplebar/simplebar.min.js"></script>
+    <script src="static/libs/node-waves/waves.min.js"></script>
+    <script src="static/libs/apexcharts/apexcharts.min.js"></script>
+      <script src="static/js/toggle.js"></script>
+    <script src="static/js/pages/crypto-dashboard.init.js"></script>
+    <script src="static/js/app.js"></script>
+  </body>
+</html>
